@@ -45,7 +45,13 @@ END;
 $$
 LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS artist_log_trigger ON artists;
+DROP TRIGGER IF EXISTS db_log_artist_trigger ON artists;
+DROP TRIGGER IF EXISTS db_log_album_trigger ON albums;
+DROP TRIGGER IF EXISTS db_log_award_trigger ON awards;
+DROP TRIGGER IF EXISTS db_log_producer_trigger ON producers;
+DROP TRIGGER IF EXISTS db_log_reservation_trigger ON reservations;
+DROP TRIGGER IF EXISTS db_log_room_trigger ON rooms;
+DROP TRIGGER IF EXISTS db_log_song_trigger ON songs;
 
 CREATE TRIGGER db_log_artist_trigger
     AFTER INSERT OR UPDATE OR DELETE ON artists
