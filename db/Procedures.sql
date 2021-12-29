@@ -11,7 +11,7 @@ $$;
 
 CALL InsertArtistData ('Panos', 'band', 4);
 
-CREATE OR REPLACE PROCEDURE UpdateArtistData (id int, a_name varchar(255), a_type varchar(255), a_number_of_members int)
+CREATE OR REPLACE PROCEDURE UpdateArtistData (artist_id int, a_name varchar(255), a_type varchar(255), a_number_of_members int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -22,16 +22,16 @@ BEGIN
         artist_type = a_type,
         no_of_members = a_number_of_members
     WHERE
-        artist_id = id;
+        id = artist_id;
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE DeleteArtistData (id int)
+CREATE OR REPLACE PROCEDURE DeleteArtistData (artist_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
     DELETE FROM artists
-    WHERE artist_id = id;
+    WHERE id = artist_id;
 END
 $$;
 
@@ -45,7 +45,7 @@ BEGIN
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE UpdateAlbumData (id int, a_name varchar(255), a_artist_id int, a_release_date date, a_genre varchar(255), a_downloads int, a_sales int)
+CREATE OR REPLACE PROCEDURE UpdateAlbumData (album_id int, a_name varchar(255), a_artist_id int, a_release_date date, a_genre varchar(255), a_downloads int, a_sales int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -59,16 +59,16 @@ BEGIN
         no_of_downloads = a_downloads,
         no_of_sales = a_sales
     WHERE
-        album_id = id;
+        id = album_id;
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE DeleteArtistData (id int)
+CREATE OR REPLACE PROCEDURE DeleteAlbumData (album_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
     DELETE FROM ablums
-    WHERE album_id = id;
+    WHERE id = album_id;
 END
 $$;
 
@@ -82,7 +82,7 @@ BEGIN
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE UpdateProducerData (id int, p_name varchar(255), p_age int, p_sex varchar(255))
+CREATE OR REPLACE PROCEDURE UpdateProducerData (producer_id int, p_name varchar(255), p_age int, p_sex varchar(255))
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -93,16 +93,16 @@ BEGIN
         age = p_age,
         sex = p_sex
     WHERE
-        producer_id = id;
+        id = producer_id;
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE DeleteProducerData (id int)
+CREATE OR REPLACE PROCEDURE DeleteProducerData (producer_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
     DELETE FROM producers
-    WHERE producer_id = id;
+    WHERE id = producer_id;
 END
 $$;
 
@@ -116,7 +116,7 @@ BEGIN
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE UpdateSongData (id int, s_name varchar(255), s_album_id int, s_artist_id int, s_producer_id int, s_song_sales int, s_song_downloads int)
+CREATE OR REPLACE PROCEDURE UpdateSongData (song_id int, s_name varchar(255), s_album_id int, s_artist_id int, s_producer_id int, s_song_sales int, s_song_downloads int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -130,16 +130,16 @@ BEGIN
         song_sales = s_song_sales,
         song_downloads = s_song_downloads
     WHERE
-        song = id;
+        id = song_id;
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE DeleteSongData (id int)
+CREATE OR REPLACE PROCEDURE DeleteSongData (song_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
     DELETE FROM songs
-    WHERE song_id = id;
+    WHERE id = song_id;
 END
 $$;
 
@@ -153,7 +153,7 @@ BEGIN
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE UpdateRoomData (id int, r_name varchar(255), r_size_in_sqm real, r_floor int)
+CREATE OR REPLACE PROCEDURE UpdateRoomData (room_id int, r_name varchar(255), r_size_in_sqm real, r_floor int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -164,16 +164,16 @@ BEGIN
         size_in_sqm = r_size_in_sqm,
         floor = r_floor
     WHERE
-        room_id = id;
+        id = room_id;
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE DeleteRoomData (id int)
+CREATE OR REPLACE PROCEDURE DeleteRoomData (room_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
     DELETE FROM rooms
-    WHERE room_id = id;
+    WHERE id = room_id;
 END
 $$;
 
@@ -187,7 +187,7 @@ BEGIN
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE UpdateReservationData (id int, res_date timestamp, res_artist_id int, res_producer_id int, res_room_id int)
+CREATE OR REPLACE PROCEDURE UpdateReservationData (reservation_id int, res_date timestamp, res_artist_id int, res_producer_id int, res_room_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -199,16 +199,16 @@ BEGIN
         producer_id = res_producer_id,
         room_id = res_room_id
     WHERE
-        reservation_id = id;
+        id = reservation_id;
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE DeleteReservationData (id int)
+CREATE OR REPLACE PROCEDURE DeleteReservationData (reservation_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
     DELETE FROM reservations
-    WHERE reservation_id = id;
+    WHERE id = reservation_id;
 END
 $$;
 
@@ -222,7 +222,7 @@ BEGIN
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE UpdateAwardData (id int, a_name varchar(255), a_album_id int)
+CREATE OR REPLACE PROCEDURE UpdateAwardData (award_id int, a_name varchar(255), a_album_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -232,16 +232,16 @@ BEGIN
         name = a_name,
         album_id = a_album_id
     WHERE
-        award_id = id;
+        id = award_id;
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE DeleteAwardData (id int)
+CREATE OR REPLACE PROCEDURE DeleteAwardData (award_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
     DELETE FROM awards
-    WHERE award_id = id;
+    WHERE id = award_id;
 END
 $$;
 
