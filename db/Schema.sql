@@ -85,3 +85,13 @@ CREATE TABLE awards (
     FOREIGN KEY (album_id) REFERENCES albums(id),
     PRIMARY KEY (id)
 );
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    id SERIAL,
+    username VARCHAR(255),
+    password VARCHAR(255)
+);
+
+INSERT INTO users VALUES (default, 'admin','admin');
