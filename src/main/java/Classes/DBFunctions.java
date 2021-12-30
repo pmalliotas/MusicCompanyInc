@@ -19,7 +19,7 @@ public class DBFunctions {
     static String url = "jdbc:postgresql://localhost:5432/MusicCompanyInc";
     static Connection dbConnection = null;
     static String db_username = "postgres";
-    static String db_passwd = "3451";
+    static String db_passwd = "sakasaka";
     static Statement statement = null;
     static ResultSet rs = null;
     
