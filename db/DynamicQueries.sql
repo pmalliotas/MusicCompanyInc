@@ -48,3 +48,5 @@ BEGIN
         name ILIKE pattern;
 END
 $$;
+
+-- SELECT * FROM SearchArtistByName('%kos%');
