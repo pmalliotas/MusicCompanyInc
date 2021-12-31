@@ -384,6 +384,7 @@ BEGIN
 END
 $$;
 
+--DYNAMIC QUERIES
 -- USER
 DROP FUNCTION IF EXISTS LoginUser;
 
@@ -410,3 +411,25 @@ END IF;
 END
 $$;
 
+--ARTIST
+
+DROP FUNCTION IF EXISTS SearchArtistByName;
+
+CREATE OR REPLACE FUNCTION SearchArtistByName (pattern varchar)
+    RETURNS TABLE (
+        ArtistId int,
+        ArtistName varchar,
+        ArtistType varchar,
+        Members int)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        *
+    FROM
+        artists
+    WHERE
+        name ILIKE pattern;
+END
+$$;
