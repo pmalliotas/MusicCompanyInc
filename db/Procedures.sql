@@ -29,6 +29,7 @@ END
 $$;
 
 CALL InsertArtistData ('Panos', 'band', 4);
+CALL InsertArtistData ('Bill', 'solo', 1);
 
 CREATE OR REPLACE PROCEDURE UpdateArtistData (artist_id int, a_name varchar(255), a_type varchar(255), a_number_of_members int)
 LANGUAGE plpgsql
@@ -86,6 +87,11 @@ BEGIN
 END
 $$;
 
+CALL InsertAlbumData ('New Days', 1, '2021-12-09','Rock',1000,500);
+CALL InsertAlbumData ('Raining Forests', 2, '2015-01-24','Pop',5000,1900);
+
+
+
 CREATE OR REPLACE PROCEDURE UpdateAlbumData (album_id int, a_name varchar(255), a_artist_id int, a_release_date date, a_genre varchar(255), a_downloads int, a_sales int)
 LANGUAGE plpgsql
 AS $$
@@ -103,6 +109,9 @@ BEGIN
         id = album_id;
 END
 $$;
+
+CALL UpdateAlbumData (2,'Raining Forests', 2, '2015-01-24','Pop',6000,3000);
+
 
 CREATE OR REPLACE PROCEDURE DeleteAlbumData (album_id int)
 LANGUAGE plpgsql
@@ -133,6 +142,8 @@ BEGIN
 END
 $$;
 
+
+
 CREATE OR REPLACE PROCEDURE InsertProducerData (name varchar(255), age int, sex varchar(255))
 LANGUAGE plpgsql
 AS $$
@@ -141,6 +152,10 @@ BEGIN
         VALUES (DEFAULT, name, age, sex);
 END
 $$;
+
+CALL InsertProducerData ('Mike',35,'Male');
+CALL InsertProducerData ('Georgia',28,'Female');
+
 
 CREATE OR REPLACE PROCEDURE UpdateProducerData (producer_id int, p_name varchar(255), p_age int, p_sex varchar(255))
 LANGUAGE plpgsql
@@ -194,9 +209,12 @@ LANGUAGE plpgsql
 AS $$
 BEGIN
     INSERT INTO songs
-        VALUES (DEFAULT, album_id, artist_id, producer_id, song_sales, song_downloads);
+        VALUES (DEFAULT, name, album_id, artist_id, producer_id, song_sales, song_downloads);
 END
 $$;
+
+CALL InsertSongData ('A lovely walk', 1, 1, 1, 2000, 4000);
+CALL InsertSongData ('The tree that dropped', 2, 2, 2, 8000, 11000);
 
 CREATE OR REPLACE PROCEDURE UpdateSongData (song_id int, s_name varchar(255), s_album_id int, s_artist_id int, s_producer_id int, s_song_sales int, s_song_downloads int)
 LANGUAGE plpgsql
@@ -254,6 +272,10 @@ BEGIN
 END
 $$;
 
+CALL InsertRoomData('Studio 1', 100, 1);
+CALL InsertRoomData('Studio 2', 150, 2);
+
+
 CREATE OR REPLACE PROCEDURE UpdateRoomData (room_id int, r_name varchar(255), r_size_in_sqm real, r_floor int)
 LANGUAGE plpgsql
 AS $$
@@ -307,6 +329,8 @@ BEGIN
         VALUES (DEFAULT, date, artist_id, producer_id, room_id);
 END
 $$;
+
+CALL InsertReservationData('2022-01-10', 2, 2, 1);
 
 CREATE OR REPLACE PROCEDURE UpdateReservationData (reservation_id int, res_date timestamp, res_artist_id int, res_producer_id int, res_room_id int)
 LANGUAGE plpgsql

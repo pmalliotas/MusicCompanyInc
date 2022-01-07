@@ -12,6 +12,9 @@ CREATE TABLE artists (
     PRIMARY KEY (id)
 );
 
+
+
+
 DROP TABLE IF EXISTS albums;
 
 CREATE TABLE albums (
