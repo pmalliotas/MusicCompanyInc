@@ -87,7 +87,7 @@ BEGIN
 END
 $$;
 
-CALL InsertAlbumData ('New Days', 1, '2021-12-09','Rock',1000,500);
+CALL InsertAlbumData ('New Days', 1, '2021-12-09','Rock', 1000, 500);
 CALL InsertAlbumData ('Raining Forests', 2, '2015-01-24','Pop',5000,1900);
 
 
@@ -117,7 +117,7 @@ CREATE OR REPLACE PROCEDURE DeleteAlbumData (album_id int)
 LANGUAGE plpgsql
 AS $$
 BEGIN
-    DELETE FROM ablums
+    DELETE FROM albums
     WHERE id = album_id;
 END
 $$;
@@ -405,5 +405,26 @@ AS $$
 BEGIN
     DELETE FROM awards
     WHERE id = award_id;
+END
+$$;
+
+
+-- Log
+
+CREATE OR REPLACE FUNCTION GetLog ()
+    RETURNS TABLE (
+        Operation CHAR,
+        Stamp TIMESTAMP,
+        UserId VARCHAR,
+        TableName VARCHAR,
+        FieldId INT)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        *
+    FROM
+        db_log;
 END
 $$;
