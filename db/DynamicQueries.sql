@@ -86,6 +86,7 @@ CREATE OR REPLACE FUNCTION SearchAlbumBySales (minimum_sales int)
     RETURNS TABLE (
         AlbumId int,
         AlbumName varchar,
+        ArtistId int,
         AlbumReleaseDate date,
         AlbumGenre varchar,
         AlbumDownloads int,

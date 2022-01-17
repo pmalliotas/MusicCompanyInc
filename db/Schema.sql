@@ -13,8 +13,6 @@ CREATE TABLE artists (
 );
 
 
-
-
 DROP TABLE IF EXISTS albums;
 
 CREATE TABLE albums (

@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS db_log;
 
 CREATE TABLE db_log (
     operation char(1) NOT NULL,
-    stamp timestamp NOT NULL PRIMARY KEY,
+    stamp timestamp NOT NULL,
     userid varchar(20) NOT NULL,
     table_name varchar(30) NOT NULL,
     id INT NOT NULL

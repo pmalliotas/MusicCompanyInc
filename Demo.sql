@@ -4,9 +4,9 @@
 CALL InsertArtistData ('Panos', 'band', 4);
 
 -- (id, Artist Name, Type, Number of Members)
-CALL UpdateArtistData(__, 'Stelios and Friends', 'band', 3);
+CALL UpdateArtistData(31, 'Stelios and Friends', 'band', 3);
 
-CALL DeleteArtistData(__);
+CALL DeleteArtistData(31);
 
 SELECT * FROM GetAllArtists() as Artists;
 
